@@ -1,0 +1,11 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+  },
+  "scripts": {
+    "front": "cd frontend && yarn start",
+    "api": "cd api-server && yarn start"
+  }
+}

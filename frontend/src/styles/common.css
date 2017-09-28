@@ -1,0 +1,7 @@
+.common {
+    height: 100%;
+}
+
+.common > * {
+    z-index: 1;
+}

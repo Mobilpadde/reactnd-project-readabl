@@ -1,0 +1,15 @@
+.home {
+    text-align: center;
+}
+
+.home > div {
+    width: 50vw;
+    padding: 2vmin;
+    display: inline-block;
+    text-align: left;
+}
+
+.home .time, .home .author, .home .comments, .home .category {
+    float: left;
+    margin: 5px;
+}

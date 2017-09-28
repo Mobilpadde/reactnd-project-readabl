@@ -1,0 +1,22 @@
+.create textarea, .create input {
+    width: 100%;
+    appearance: none;
+    border: 2px solid #eee;
+    margin: 0;
+    background: none;
+    resize: none;
+    color: #eeeeee;
+    padding: 15px;
+}
+
+.create textarea {
+    border-bottom: 1px solid #eee;
+    border-radius: 5px 5px 0 0;
+}
+
+.create input {
+    border-top: none;
+    margin-top: -5px;
+    width: 53.2vw;
+    border-radius: 0 0 5px 5px;
+}

@@ -1,0 +1,18 @@
+.title {
+    text-decoration: underline;
+    text-decoration-color: #eee;
+    width: 100%;
+    color: aquamarine;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+
+.detail .title {
+    font-size: 2.5em;
+}
+
+.home .title {
+    font-size: 1.5em;
+}

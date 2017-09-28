@@ -1,0 +1,9 @@
+.time {
+    float: right;
+    text-align: right;
+}
+
+.time > div > span {
+    vertical-align: sub;
+    font-size: 0.5em;
+}

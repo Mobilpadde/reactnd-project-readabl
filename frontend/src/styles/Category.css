@@ -1,0 +1,11 @@
+.category {
+    float: right;
+    text-align: right;
+}
+
+.category > div > a, .category > div > a:visited {
+    vertical-align: sub;
+    font-size: 0.5em;
+    color: #eeeeee;
+    text-decoration: none;
+}
