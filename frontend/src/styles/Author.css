@@ -1,0 +1,9 @@
+.author {
+    float: right;
+    text-align: right;
+}
+
+.author > div > span {
+    vertical-align: sub;
+    font-size: 0.5em;
+}
