@@ -9,7 +9,7 @@ const types = {
     updatePost: 'UPDATE_POST'
 };
 
-export const addComment = (parent, author, body) => {
+const addComment = (parent, author, body) => {
     return {
         [parent]: {
             type: types.addComment,
@@ -25,6 +25,7 @@ export const addComment = (parent, author, body) => {
     }
 };
 
+export default types;
 export {
-    types,
+    addComment,
 }

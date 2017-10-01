@@ -1,4 +1,4 @@
-import { types } from '../actions';
+import types from '../actions';
 
 const comments = (state = [], action) => {
     switch(action.type) {
