@@ -28,8 +28,8 @@ const mapDispatchToProps = dispatch => ({
         if (value.trim() === '')
             return;
 
-        debugger;
-        dispatch(addComment('8xf0y6ziyjabvozdd253nd', 'Mobilpadde', value))
+        dispatch(addComment('8xf0y6ziyjabvozdd253nd', 'Mobilpadde', value));
+        body.value = '';
     },
 });
 

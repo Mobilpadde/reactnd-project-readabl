@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { getPost, getComments } from "../util/Fetcher";
 
@@ -67,4 +68,10 @@ class Detail extends Component {
     }
 }
 
-export default Detail;
+const mapStateToProps = state => {
+    return {
+        ...state,
+    };
+};
+
+export default connect(mapStateToProps)(Detail);

@@ -18,12 +18,14 @@ import './styles/common.css';
 const history = createHistory();
 const middleware = routerMiddleware(history);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancers = composeEnhancers({
+    ...reducers,
+    routing: routerReducer,
+});
+
 const store = createStore(
-    composeEnhancers({
-        ...reducers,
-        routing: routerReducer,
-    }),
-    applyMiddleware(...middleware)
+    enhancers, applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 ReactDOM.render(

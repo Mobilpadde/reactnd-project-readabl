@@ -9,7 +9,7 @@ function Title(props){
 }
 
 Title.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     title: PropTypes.string.isRequired,
 };
 

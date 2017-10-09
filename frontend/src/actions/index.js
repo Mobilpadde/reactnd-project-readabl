@@ -11,17 +11,15 @@ const types = {
 
 const addComment = (parent, author, body) => {
     return {
-        [parent]: {
-            type: types.addComment,
-            patentId: parent,
-            id: uuidv5.URL,
-            body,
-            author,
-            timestamp: Date.now(),
-            voteScore: 1,
-            deleted: false,
-            parentDeleted: false,
-        }
+        type: types.addComment,
+        patentId: parent,
+        id: uuidv5.URL,
+        body,
+        author,
+        timestamp: Date.now(),
+        voteScore: 1,
+        deleted: false,
+        parentDeleted: false,
     }
 };
 
