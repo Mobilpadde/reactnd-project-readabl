@@ -1,32 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import { Route } from 'react-router';
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
+import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 import Home from './components/Home';
 import Detail from "./components/Detail";
+import { getAllPosts } from "./actions";
 import registerServiceWorker from './registerServiceWorker';
 
 import './styles/index.css';
 import './styles/common.css';
+import {getAllCommentsForPost} from "./actions/index";
 
 const history = createHistory();
-const middleware = routerMiddleware(history);
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const enhancers = composeEnhancers({
+const middleware = [routerMiddleware(history), thunk];
+const rootReducer = combineReducers({
     ...reducers,
     routing: routerReducer,
 });
 
-const store = createStore(
-    enhancers, applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
+
+store.dispatch(getAllPosts());
 
 ReactDOM.render(
     <Provider store={store}>

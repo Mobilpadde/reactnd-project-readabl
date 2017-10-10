@@ -1,17 +1,28 @@
 import types from '../actions';
 
 const comments = (state = [], action) => {
-    console.log(action);
     switch(action.type) {
-        case types.addComment:
-            return [
+        case types.getComments:
+            return {
                 ...state,
-                {
-                    parent: action.parent,
-                    author: action.author,
-                    body: action.body,
-                }
-            ];
+                ...action.comments
+            };
+
+        case types.addComment:
+            console.log(Object.keys(state).map(id => ({
+                [id]: [
+                    ...state[id],
+                    ...action.comment[id],
+                ],
+            }))[0]);
+            return Object.keys(state).map(id => ({
+                    [id]: [
+                        ...state[id],
+                        ...action.comment[id],
+                    ],
+                })
+            )[0];
+
         default:
             return state;
     }

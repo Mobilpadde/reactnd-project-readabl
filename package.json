@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "front": "cd frontend && yarn start",

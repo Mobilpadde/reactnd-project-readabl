@@ -3,11 +3,11 @@ import Quote from 'react-icons/lib/go/quote';
 
 import '../styles/Comment.css';
 
-function Comment(props){
+function Comment({ text }){
     return (
         <div className="comment">
             <Quote />
-            <p>{props.text}</p>
+            <p>{text}</p>
         </div>
     );
 }
