@@ -1,6 +1,6 @@
 .category {
-    float: right;
-    text-align: right;
+    display: inline-block;
+    float: left;
 }
 
 .category > div > a, .category > div > a:visited {

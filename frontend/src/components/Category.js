@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 import '../styles/Category.css';
 
-const Category = props => (
+const Category = ({ category }) => (
     <div className="category">
         <div>
             <GitMerge/>
-            <Link to={`/category/${props.category}`}>{props.category}</Link>
+            <Link to={`/category/${category}`}>{category}</Link>
         </div>
     </div>
 );

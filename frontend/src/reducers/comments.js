@@ -9,19 +9,42 @@ const comments = (state = [], action) => {
             };
 
         case types.addComment:
-            console.log(Object.keys(state).map(id => ({
-                [id]: [
-                    ...state[id],
-                    ...action.comment[id],
-                ],
-            }))[0]);
-            return Object.keys(state).map(id => ({
+            return state != [] ? Object.keys(state || action).map(id => ({
                     [id]: [
                         ...state[id],
                         ...action.comment[id],
                     ],
                 })
-            )[0];
+            )[0] : action.comment;
+
+        case types.updateComment:
+            return Object.keys(state).map(parentId => {
+                if (parentId === action.parentId) {
+                    return {
+                        [parentId]: state[parentId].filter(c => c.id !== action.id)
+                    };
+                }
+
+                return parentId;
+            })[0];
+
+        case types.removeComment:
+            return Object.keys(state).map(parentId => {
+                if (parentId === action.parentId) {
+                    return {
+                        [parentId]: state[parentId].map(c => {
+                            if (c.id === action.id){
+                                c.body = action.body;
+                                c.timestamp = action.timestamp;
+                            }
+
+                            return c;
+                        })
+                    };
+                }
+
+                return parentId;
+            })[0];
 
         default:
             return state;

@@ -1,0 +1,22 @@
+.update textarea, .update input {
+    width: calc(100% - 15px * 2);
+    appearance: none;
+    border: 2px solid #eee;
+    margin: 0;
+    background: none;
+    resize: none;
+    color: #333;
+    padding: 15px;
+}
+
+.update textarea {
+    border-bottom: 1px solid #eee;
+    border-radius: 5px 5px 0 0;
+}
+
+.update input {
+    border-top: none;
+    margin-top: -5px;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}

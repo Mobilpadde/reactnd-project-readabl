@@ -71,7 +71,7 @@ function add (token, post) {
       timestamp: post.timestamp,
       title: post.title,
       body: post.body,
-      author: post.time,
+      author: post.author,
       category: post.category,
       voteScore: 1,
       deleted: false

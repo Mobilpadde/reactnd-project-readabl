@@ -9,7 +9,7 @@
     text-align: left;
 }
 
-.home .time, .home .author, .home .comments, .home .category {
+.home .time, .home .author, .home .comments {
     float: left;
     margin: 5px;
 }

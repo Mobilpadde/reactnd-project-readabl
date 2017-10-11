@@ -14,6 +14,18 @@ const posts = (state = [], action) => {
                 ...action.post
             ];
 
+        case types.updatePost:
+            return [
+                ...state,
+                ...action.post,
+            ];
+
+        case types.addPost:
+            return [
+                ...state,
+                ...action.post,
+            ];
+
         default:
             return state;
     }

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { addCommentForPost } from "../actions/index";
 
-import '../styles/Creator.css';
+import '../styles/CommentCreator.css';
 
-function Creator({ onSubmitComment }) {
+function CommentCreator({ onSubmitComment }) {
     let body;
 
     return (
@@ -19,7 +19,7 @@ function Creator({ onSubmitComment }) {
     );
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, { postId }) => ({
     onSubmitComment: (e, body) => {
         e.preventDefault();
         let { value } = body;
@@ -27,13 +27,13 @@ const mapDispatchToProps = dispatch => ({
         if (value.trim() === '')
             return;
 
-        dispatch(addCommentForPost('8xf0y6ziyjabvozdd253nd', value, 'Mobilpadde'));
+        dispatch(addCommentForPost(postId, value, 'Mobilpadde'));
         body.value = '';
     },
 });
 
-Creator.PropTypes = {
-
+CommentCreator.PropTypes = {
+    postId: PropTypes.string.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Creator);
+export default connect(null, mapDispatchToProps)(CommentCreator);
