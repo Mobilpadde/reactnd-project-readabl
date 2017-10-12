@@ -31,6 +31,7 @@ class Home extends Component {
                 <select onChange={e => this.setState({ asc: e.target.value === 'true' })}>
                     {[{ caption: 'ASC', bool: true }, { caption: 'DSC', bool: false }].map(o => <option key={o.caption} value={o.bool}>{o.caption}</option>)}
                 </select>
+                {<Category key='Home' category='Home' link='/' />}
                 {categories && categories.map(c => <Category key={c.name} category={c.name}/>)}
                 {
                     posts && posts
@@ -58,6 +59,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
         posts: [...state.posts],
         categories: [...state.categories],

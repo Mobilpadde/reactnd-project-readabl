@@ -5,17 +5,18 @@ import { Link } from 'react-router-dom';
 
 import '../styles/Category.css';
 
-const Category = ({ category }) => (
+const Category = ({ link, category }) => (
     <div className="category">
         <div>
             <GitMerge/>
-            <Link to={`/category/${category}`}>{category}</Link>
+            <Link to={link ? link : `/category/${category}`}>{category}</Link>
         </div>
     </div>
 );
 
 Category.propTypes = {
     category: PropTypes.string.isRequired,
+    link: PropTypes.string,
 };
 
 export default Category;

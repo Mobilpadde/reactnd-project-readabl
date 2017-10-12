@@ -11,6 +11,9 @@ const request = (slug, method, body) => new Request(`http://localhost:3001/${slu
 
 const getCategories = () => fetch(request(`categories`, 'get', null));
 
+const upvotePost = id => fetch(request(`posts/${id}`, 'post', JSON.stringify({ option: 'upVote' })));
+const downvotePost = id => fetch(request(`posts/${id}`, 'post', JSON.stringify({ option: 'downVote' })));
+
 const getPosts = () => fetch(request(`posts`, 'get', null));
 const getPost = id => fetch(request(`posts/${id}`, 'get', null));
 const addPost = post => fetch(request(`posts`, 'post', JSON.stringify(post)));
@@ -24,6 +27,9 @@ const deleteComment = id => fetch(request(`comments/${id}`, 'delete', null));
 
 export {
     getCategories,
+
+    upvotePost,
+    downvotePost,
 
     getPosts,
     getPost,

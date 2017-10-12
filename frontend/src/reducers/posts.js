@@ -11,19 +11,22 @@ const posts = (state = [], action) => {
         case types.getPost:
             return [
                 ...state,
-                ...action.post
+                action.post
             ];
+
+        case types.removePost:
+            return [...state].filter(p => p.id !== action.id);
 
         case types.updatePost:
             return [
                 ...state,
-                ...action.post,
+                action.post,
             ];
 
         case types.addPost:
             return [
                 ...state,
-                ...action.post,
+                action.post,
             ];
 
         default:

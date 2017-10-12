@@ -27,6 +27,27 @@ const getCategories = () => dispatch => {
         .catch(console.error);
 };
 
+const upvotePost = (id) => {
+    return dispatch => {
+        api.upvotePost(id)
+            .then(res => res.json())
+            .then(res => dispatch({
+                type: types.updatePost,
+                post: res,
+            }))
+    };
+};
+const downvotePost = (id) => {
+    return dispatch => {
+        api.downvotePost(id)
+            .then(res => res.json())
+            .then(res => dispatch({
+                type: types.updatePost,
+                post: res,
+            }))
+    };
+};
+
 const getAllPostsAction = posts => ({
     type: types.getPosts,
     posts,
@@ -80,21 +101,22 @@ const addPost = (title, body, category, author) => {
             category,
             author,
         })
-            .then(res => dispatch(updatePostAction(res)))
+            .then(res => res.json())
+            .then(res => { console.log(res); return res; })
+            .then(res => dispatch(addPostAction(res)))
             .catch(console.error);
     }
 };
 
-const removePostAction = (id, parentId) => ({
-    type: types.removeComment,
+const removePostAction = id => ({
+    type: types.removePost,
     id,
-    parentId
 });
 const removePost = id => {
     return dispatch => {
         api.deletePost(id)
             .then(res => res.json())
-            .then(res => dispatch(removePostAction(res.id, res.parentId)))
+            .then(res => dispatch(removePostAction(res.id)))
             .catch(console.error);
     };
 };
@@ -177,12 +199,16 @@ const removeCommentFromPost = id => {
     };
 };
 
+
 export default types;
 export {
     getCategories,
 
     getAllPosts,
     getAllPostsAction,
+
+    upvotePost,
+    downvotePost,
 
     addPost,
     updatePost,
