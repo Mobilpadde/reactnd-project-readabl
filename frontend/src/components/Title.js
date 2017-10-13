@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
+import Settings from 'react-icons/lib/go/settings';
 
 import PostUpdater from './PostUpdater';
 
@@ -30,7 +31,14 @@ class Title extends Component {
         let { edit, title, text } = this.state;
 
         if (small || false) {
-            return <Link className="title" to={`/details/${id}`}>{title}</Link>;
+            return <div>
+                <Link className="title" to={`/details/${id}`}>{title}</Link>
+
+                <Modal isOpen={edit}>
+                    <PostUpdater titleText={title} text={text} id={id} onFinishEdit={title => this.setState({ edit: false, title })}/>
+                </Modal>
+                <Settings onClick={() => this.setState({ edit: true})}/>
+            </div>;
         }
 
         return (

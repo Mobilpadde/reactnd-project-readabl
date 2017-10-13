@@ -18,10 +18,7 @@ const posts = (state = [], action) => {
             return [...state].filter(p => p.id !== action.id);
 
         case types.updatePost:
-            return [
-                ...state,
-                action.post,
-            ];
+            return [...state].filter(p => p.id !== action.id).concat([...action.post]);
 
         case types.addPost:
             return [

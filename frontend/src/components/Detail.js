@@ -31,14 +31,14 @@ class Detail extends Component {
 
         return (
             <div className="detail">
+                {<Category key='Home' category='Home' link='/' />}
+                {categories && categories.map(c => <Category key={c.name} category={c.name}/>)}
                 {
                     deleted === undefined ?
                         <span>404</span> :
                         <div>
                             <Upvote onClick={() => onUpvote(id)}/>
                             <Downvote onClick={() => onDownvote(id)}/>
-                            {<Category key='Home' category='Home' link='/' />}
-                            {categories && categories.map(c => <Category key={c.name} category={c.name}/>)}
                             {voteScore && <Rating rating={voteScore}/>}
                             {timestamp && <Time time={timestamp}/>}
                             <br/>
@@ -62,7 +62,6 @@ class Detail extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state);
     const post = state.posts.filter(post => post.id === ownProps.match.params.slug);
 
     return {
