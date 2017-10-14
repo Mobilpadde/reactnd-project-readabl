@@ -9,7 +9,7 @@ const comments = (state = [], action) => {
             };
 
         case types.addComment:
-            return state != [] ? Object.keys(state || action).map(id => ({
+            return state != [] ? Object.keys(state || []).map(id => ({
                     [id]: [
                         ...state[id],
                         ...action.comment[id],
@@ -21,7 +21,14 @@ const comments = (state = [], action) => {
             return Object.keys(state).map(parentId => {
                 if (parentId === action.parentId) {
                     return {
-                        [parentId]: state[parentId].filter(c => c.id !== action.id)
+                        [parentId]: state[parentId].map(c => {
+                            if (c.id === action.id){
+                                c.body = action.body;
+                                c.timestamp = action.timestamp;
+                            }
+
+                            return c;
+                        })
                     };
                 }
 
@@ -32,14 +39,7 @@ const comments = (state = [], action) => {
             return Object.keys(state).map(parentId => {
                 if (parentId === action.parentId) {
                     return {
-                        [parentId]: state[parentId].map(c => {
-                            if (c.id === action.id){
-                                c.body = action.body;
-                                c.timestamp = action.timestamp;
-                            }
-
-                            return c;
-                        })
+                        [parentId]: state[parentId].filter(c => c.id !== action.id)
                     };
                 }
 
